@@ -1834,7 +1834,7 @@ footer p {
 /*-----------------
 	12. Login
 -----------------------*/
-/* 
+
 .login-body {
     display: table;
     height: 100vh;
@@ -1856,7 +1856,7 @@ footer p {
     min-height: 500px;
     width: 100%;
 }
-/* .login-wrapper .loginbox .login-left {
+.login-wrapper .loginbox .login-left {
     align-items: center;
     background: #18aefa;
     background-image: url(../img/login.jpg);
@@ -1866,8 +1866,8 @@ footer p {
     padding: 80px;
     width: 400px;
     display: flex;
-    background-blend-mode: multiply;*/
-/* }
+    background-blend-mode: multiply;
+}
 .login-wrapper .loginbox .login-right {
     align-items: center;
     display: flex;
@@ -1961,7 +1961,7 @@ footer p {
 	text-transform: uppercase;
 	top: 0;
 	width: 42px;
-} */ 
+}
 
 /*-----------------
 	13. Notifications
