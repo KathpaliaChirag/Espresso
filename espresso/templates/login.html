@@ -11,8 +11,9 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 100%
-}
+    width: 100%;
+    /* background-color: rgba(147, 241, 39, 0.562) */
+   }
 .login-wrapper {
 	/* width: 100%;
 	height: 100%; */
@@ -147,7 +148,7 @@
       <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css'%}">
       <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css'%}">
       <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css'%}">
-      <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+<!--      <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">-->
    </head>
    <body>
       <div class="main-wrapper login-body">
@@ -158,7 +159,7 @@
                <div class="loginbox">
                      <!-- inner    box up                 -->
                   <div class="login-left">
-                     <img class="img-fluid" src="{%static 'assets/img/logo.jpg' %}" alt="Logo" style="height: 300px">
+                     <img class="img-fluid" src="{%static 'assets/img/logo-white.png' %}" alt="Logo" style="height: 200px">
                   </div>
                   <div class="login-right">
                      <div class="login-right-wrap">
@@ -166,17 +167,27 @@
                         <p class="account-subtitle">Access to our dashboard</p>
                         <form action="/dologin" method="POST">
                            {% csrf_token %}
+                           
                            <div class="form-group">
                               <input class="form-control" type="text" placeholder="Email" name="email">
                            </div>
                            <div class="form-group">
-                              <input class="form-control" type="text" placeholder="Password" name="password">
+                              <input class="form-control" type="password" placeholder="Password" name="password">
                            </div>
                            <div class="form-group">
                               <button class="btn btn-primary btn-block" type="submit">Login</button>
                            </div>
                         </form>
                         <div class="text-center forgotpass"><a href="forgot-password.html">Forgot Password?</a></div>
+                        {% if messages %}
+                        <div class="col-12">
+                           {% for message in messages %}
+                           {% if message.tags == 'error' %}
+                           <span class="alert alert-danger  " style="margin-left: 44px;margin-top: 8px;position: absolute;">{{message}}</span>
+                           {% endif %}
+                           {% endfor %}
+                        </div>
+                        {% endif %}
                         <!-- <div class="login-or">
                            <span class="or-line"></span>
                            <span class="span-or">or</span>

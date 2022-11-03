@@ -16,6 +16,7 @@ from django.dispatch import receiver
 class CustomUser(AbstractUser):
     user_data = ((1, "Hod"), (2, "staff"), (3, "student"))
     user_type = models.CharField(default=1, choices=user_data, max_length=10)
+    # display_pic= models.ImageField(upload_to='media/displaypic')
 
 
 # Create your models here.
