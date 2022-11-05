@@ -1373,7 +1373,7 @@ div.dataTables_wrapper div.dataTables_info {
 	line-height: 60px;
 }
 .header .header-left .logo img {
-    max-height: 40px;
+    max-height: 120px;
     width: auto;
 }
 .header-left .logo.logo-small {
