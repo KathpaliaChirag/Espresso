@@ -46,5 +46,9 @@ def dologout(request):
     return HttpResponseRedirect("/")
 
 
-def temp(req):
-    return render(req, "base.html")
+# def temp(req):
+#     return render(req, "base.html")
+
+
+def userprofile(request):
+    return render (request, 'profile.html')
