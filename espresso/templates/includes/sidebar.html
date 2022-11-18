@@ -15,9 +15,19 @@
                 <li><a href="student-dashboard.html">Student Dashboard</a></li>
              </ul>
           </li> -->
+          {% if user.user_type == '1'%}
           <li>
-            <a href="holiday.html"><i class="fas fa-laptop-code"></i> <span>Dashboard</span></a>
+            <a href="/adminhome"><i class="fas fa-laptop-code"></i> <span>Dashboard</span></a>
          </li> 	
+          {% elif user.user_type == '2'%}
+          <li>
+            <a href="/staffhome"><i class="fas fa-laptop-code"></i> <span>Dashboard</span></a>
+         </li> 	
+          {% else %}
+          <li>
+            <a href="/studenthome"><i class="fas fa-laptop-code"></i> <span>Dashboard</span></a>
+         </li> 	
+         {% endif %}
         <hr>
         <li class="submenu">
            <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Staff</span> <span class="menu-arrow"></span></a>

@@ -27,6 +27,6 @@ urlpatterns = [
     path('logout', views.dologout),
     # path('temp', views.temp),
     path('profile', views.userprofile, name= 'user_profile'),
-    path('adminhome', hodviews.adminhome)
+    path('adminhome', hodviews.adminhome, name= 'adminhome')
 
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
