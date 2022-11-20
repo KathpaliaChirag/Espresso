@@ -12,13 +12,22 @@
                      </div>
                   </div>
                </div>
+               {% if messages %}
+<div class="col-12">
+   {% for message in messages %}
+   {% if message.tags == 'success' %}
+   <span class="alert alert-danger  " style="margin-left: 44px;margin-top: 8px;position: absolute;">{{message}}</span>
+   {% endif %}
+   {% endfor %}
+</div>
+{% endif %}
                <div class="row">
                   <div class="col-md-12">
                      <div class="profile-header">
                         <div class="row align-items-center">
                            <div class="col-auto profile-image">
                               <a href="#">
-                              <img class="rounded-circle" alt="User Image" src="assets/img/profiles/avatar-02.jpg">
+                              <img class="rounded-circle" alt="User Image" src="/{{user.display_pic}}">
                               </a>
                            </div>
                            <div class="col ml-md-n2 profile-user-info">
@@ -34,7 +43,7 @@
                               <div class="about-text"> About-me Lorem ipsum dolor sit amet.</div>
                            </div>
                            <div class="col-auto profile-btn">
-                              <a href="#" class="btn btn-primary">
+                              <a href="/editprofile" class="btn btn-primary">
                               Edit
                               </a>
                            </div>
@@ -58,7 +67,7 @@
                                     <div class="card-body">
                                        <h5 class="card-title d-flex justify-content-between">
                                           <span>Personal Details</span>
-                                          <a class="edit-link" data-toggle="modal" href="#edit_personal_details"><i class="far fa-edit mr-1"></i>Edit</a>
+                                          <a class="edit-link" data-toggle="modal" href="/updateprofile"><i class="far fa-edit mr-1"></i>Edit</a>
                                        </h5>
                                        <div class="row">
                                           <p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Name</p>

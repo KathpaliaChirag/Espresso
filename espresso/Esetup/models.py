@@ -16,7 +16,11 @@ from django.dispatch import receiver
 class CustomUser(AbstractUser):
     user_data = ((1, "Hod"), (2, "staff"), (3, "student"))
     user_type = models.CharField(default=1, choices=user_data, max_length=10)
-    # display_pic= models.ImageField(upload_to='media/displaypic')
+    # gender_data = ((1, "Male"), (2, "Female"))
+    # user_gender = models.CharField(default = 1, choices= gender_data, max_length= 10)
+    # user_address= models.CharField(default ="Not defined", max_length= 300)
+
+    display_pic= models.ImageField(default= "", upload_to='displaypic')
 
 
 # Create your models here.
@@ -74,6 +78,7 @@ class students(models.Model):
     gender = models.CharField(max_length=255)
     dp = models.FileField()
     course_id = models.ForeignKey(Courses, on_delete=models.DO_NOTHING)
+    # session_id = models.ForeignKey(, on_delete=models.DO_NOTHING)
     # object= models.Manager()
     created_at = models.DateTimeField(blank=True)
     updated_at = models.DateTimeField(blank=True)

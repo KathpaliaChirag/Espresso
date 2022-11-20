@@ -1597,7 +1597,7 @@ footer p {
 -----------------------*/
 
 .sidebar {
-    background-color: #7171f5;
+    background-color: #ffffff;
 	border-right: 1px solid #ececf5;
     bottom: 0;
     left: 0;
@@ -1607,7 +1607,7 @@ footer p {
     transition: all 0.2s ease-in-out 0s;
     width: 320px;
     z-index: 1001;
-	color: black;	
+	/* color: black;	 */
 }
 .sidebar.opened {
 	-webkit-transition: all 0.4s ease;

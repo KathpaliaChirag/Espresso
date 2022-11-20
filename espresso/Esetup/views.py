@@ -1,10 +1,10 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import login, logout, authenticate
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from Esetup.emailbackend import EmailBackend
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
+from Esetup.models import CustomUser
 # Create your views here.
 def loginpage(request):
     return render(request, 'login.html')
@@ -52,3 +52,40 @@ def dologout(request):
 
 def userprofile(request):
     return render (request, 'profile.html')
+
+def editprofile(request):
+    user= CustomUser.objects.get(id= request.user.id)
+    # print(user) 
+    context= {
+        "user":user,
+    }
+    return render(request, "editprofile.html", context)
+
+def updateprofile(request):
+    if request.method == "POST":
+        profile_pic= request.FILES.get('profile_pic')
+        first_name= request.POST.get('first_name')
+        last_name= request.POST.get('last_name')
+        # email= request.POST.get('email')
+        # username= request.POST.get('username')
+        password= request.POST.get('password')
+        # aboutme= request.POST.get('about')
+        # print(profile_pic, first_name, last_name, password, email, username)
+        try:
+            customuser = CustomUser.objects.get(id = request.user.id)
+            customuser.first_name = first_name
+            customuser.last_name= last_name
+            # customuser.username = username
+            # customuser.email = email
+            customuser.display_pic = profile_pic
+            if password != None and password != "":
+                customuser.set_password(password)
+            customuser.save()
+            messages.success(request, "Your profile updated successfully")
+            return render(request, "profile.html")
+            # redirect('user_profile')
+            
+        except:
+            messages.error(request, "Failed to update profile")
+            return render(request, 'editprofile.html')
+    # return HttpResponse("if didnt worked")

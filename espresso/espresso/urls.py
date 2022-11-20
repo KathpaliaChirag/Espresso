@@ -26,7 +26,11 @@ urlpatterns = [
     path('usersdetails', views.userdetails),
     path('logout', views.dologout),
     # path('temp', views.temp),
+    path('adminhome', hodviews.adminhome, name= 'adminhome'),
     path('profile', views.userprofile, name= 'user_profile'),
-    path('adminhome', hodviews.adminhome, name= 'adminhome')
+    path('editprofile', views.editprofile, name= 'editprofile'),
+    path('updateprofile', views.updateprofile, name= 'updateprofile'),
 
-]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -11,7 +11,7 @@
  <i class="fas fa-align-left"></i>
  </a>
  <div class="top-nav-search">
-    <h4>Time is <span id="livetime"> </span></h4>
+    <h4><span id="livetime"> </span></h4>
 <!--    <form>-->
 <!--       <input type="text" class="form-control" placeholder="Search here">-->
 <!--       <button class="btn" type="submit"><i class="fas fa-search"></i></button>-->
@@ -93,13 +93,15 @@
     </li>
     <li class="nav-item dropdown has-arrow">
        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+       <!-- <span class="user-img"><img class="rounded-circle" src="/{{user.display_pic}}" width="35px" height="40px" alt={{user.first_name}}></span> -->
        <span class="user-img"><img class="rounded-circle" src="{%static 'assets/img/profiles/admin-2.jpg'%}" width="35px" height="40px" alt={{user.first_name}}></span>
        </a>
        <div class="dropdown-menu">
           <div class="user-header">
              <div class="avatar avatar-sm">
-                <img src="{%static 'assets/img/profiles/admin-2.jpg'%}" alt="User Image" class="avatar-img rounded-circle">
-             </div>
+                <img src="/{{user.display_pic}}" alt="User Image" class="avatar-img rounded-circle">
+                <!-- <img src="{%static 'assets/img/profiles/admin-2.jpg'%}" alt="User Image" class="avatar-img rounded-circle"> -->
+            </div>
              <div class="user-text">
                 <h6><span>{{user.first_name}} {{user.last_name}}</span></h6>
                 {% if user.user_type == '1' %}
