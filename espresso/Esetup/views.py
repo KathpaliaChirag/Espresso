@@ -49,10 +49,10 @@ def dologout(request):
 # def temp(req):
 #     return render(req, "base.html")
 
-
+@login_required(login_url='/')
 def userprofile(request):
     return render (request, 'profile.html')
-
+@login_required(login_url='/')
 def editprofile(request):
     user= CustomUser.objects.get(id= request.user.id)
     # print(user) 
@@ -60,7 +60,7 @@ def editprofile(request):
         "user":user,
     }
     return render(request, "editprofile.html", context)
-
+@login_required(login_url='/')
 def updateprofile(request):
     if request.method == "POST":
         profile_pic= request.FILES.get('profile_pic')
@@ -77,15 +77,16 @@ def updateprofile(request):
             customuser.last_name= last_name
             # customuser.username = username
             # customuser.email = email
-            customuser.display_pic = profile_pic
             if password != None and password != "":
                 customuser.set_password(password)
+            if profile_pic != None and profile_pic != "":
+                customuser.display_pic = profile_pic
             customuser.save()
             messages.success(request, "Your profile updated successfully")
-            return render(request, "profile.html")
-            # redirect('user_profile')
-            
+            # return render(request, "profile.html") 
+            return redirect('user_profile')
+            # used redirect to update image instantly, render failed to update the image
         except:
             messages.error(request, "Failed to update profile")
-            return render(request, 'editprofile.html')
+            return redirect(request, 'editprofile.html')
     # return HttpResponse("if didnt worked")

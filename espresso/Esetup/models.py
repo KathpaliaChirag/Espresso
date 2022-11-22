@@ -19,7 +19,6 @@ class CustomUser(AbstractUser):
     # gender_data = ((1, "Male"), (2, "Female"))
     # user_gender = models.CharField(default = 1, choices= gender_data, max_length= 10)
     # user_address= models.CharField(default ="Not defined", max_length= 300)
-
     display_pic= models.ImageField(default= "", upload_to='displaypic')
 
 
@@ -51,10 +50,24 @@ class staff(models.Model):
 class Courses(models.Model):
     id = models.AutoField(primary_key=True)
     course_name = models.CharField(max_length=255)
-    created_at = models.DateTimeField(blank=True)
-    updated_at = models.DateTimeField(blank=True)
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
     object = models.Manager()
 
+    def __str__(self):
+        return self.course_name
+
+class Session(models.Model):
+    id = models.AutoField(primary_key=True)
+    session_start = models.CharField(max_length=255)
+    session_end = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    object = models.Manager()
+
+    def __str__(self):
+        a= self.session_start + "-" + self.session_end
+        return a
 
 class subjects(models.Model):
     id = models.AutoField(primary_key=True)
@@ -69,20 +82,23 @@ class subjects(models.Model):
 class students(models.Model):
     id = models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    session_start_year = models.DateField()
-    session_end_year = models.DateField()
+    # session_start_year = models.DateField()
+    # session_end_year = models.DateField()
     # name = models.CharField(max_length= 255)
     # email = models.CharField(max_length= 255)
     # password = models.CharField(max_length= 255)
     address = models.TextField()
     gender = models.CharField(max_length=255)
-    dp = models.FileField()
+    # dp = models.FileField()
     course_id = models.ForeignKey(Courses, on_delete=models.DO_NOTHING)
-    # session_id = models.ForeignKey(, on_delete=models.DO_NOTHING)
+    session_id = models.ForeignKey(Session, default= "timezone.now",on_delete=models.DO_NOTHING)
     # object= models.Manager()
     created_at = models.DateTimeField(blank=True)
     updated_at = models.DateTimeField(blank=True)
     objects = models.Manager()
+
+    def __str__(self):
+        return self.admin.first_name + ' ' + self.admin.last_name
 
 
 class attendence(models.Model):
