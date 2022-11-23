@@ -15,3 +15,7 @@ def addstaff(request):
 @login_required(login_url= '/')
 def addsubject(request):
     return render(request, 'hod/addsubject.html')
+
+@login_required(login_url= '/')
+def addcourse(request):
+    return render(request, 'hod/addcourse.html')

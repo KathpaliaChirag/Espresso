@@ -18,7 +18,7 @@ from django.urls import path
 
 from django.conf.urls.static import static
 from django.conf import settings
-from Esetup import views, hodviews
+from Esetup import views, hodviews, staffviews, studentviews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.loginpage, name='loginpage'),
@@ -35,6 +35,9 @@ urlpatterns = [
     path('addstudent', hodviews.addstudent, name= 'addstudent'),
     path('addstaff', hodviews.addstaff, name= 'addstaff'),
     path('addsubject', hodviews.addsubject, name= 'addsubject'),
+    path('addcourse', hodviews.addcourse, name= 'addcourse'),
+    #student functions
+    path('studenthome', studentviews.studenthome, name='studenthome')
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
