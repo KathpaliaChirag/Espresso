@@ -37,7 +37,10 @@ urlpatterns = [
     path('addsubject', hodviews.addsubject, name= 'addsubject'),
     path('addcourse', hodviews.addcourse, name= 'addcourse'),
     #student functions
-    path('studenthome', studentviews.studenthome, name='studenthome')
+    path('studenthome', studentviews.studenthome, name='studenthome'),
+
+    #teacher function
+    path('staffhome', staffviews.studenthome, name='staffhome'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -93,8 +93,8 @@ class students(models.Model):
     course_id = models.ForeignKey(Courses, on_delete=models.DO_NOTHING)
     session_id = models.ForeignKey(Session, default= "timezone.now",on_delete=models.DO_NOTHING)
     # object= models.Manager()
-    created_at = models.DateTimeField(blank=True)
-    updated_at = models.DateTimeField(blank=True)
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
     objects = models.Manager()
 
     def __str__(self):
