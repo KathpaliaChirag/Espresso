@@ -82,20 +82,20 @@ class subjects(models.Model):
 class students(models.Model):
     id = models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    address = models.TextField()
+    gender = models.CharField(max_length=255)
+    course_id = models.ForeignKey(Courses, on_delete=models.DO_NOTHING)
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = models.Manager()
     # session_start_year = models.DateField()
     # session_end_year = models.DateField()
     # name = models.CharField(max_length= 255)
     # email = models.CharField(max_length= 255)
     # password = models.CharField(max_length= 255)
-    address = models.TextField()
-    gender = models.CharField(max_length=255)
     # dp = models.FileField()
-    course_id = models.ForeignKey(Courses, on_delete=models.DO_NOTHING)
-    session_id = models.ForeignKey(Session, default= "timezone.now",on_delete=models.DO_NOTHING)
+    # session_id = models.ForeignKey(Session,on_delete=models.DO_NOTHING)
     # object= models.Manager()
-    created_at = models.DateTimeField(auto_now=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    objects = models.Manager()
 
     def __str__(self):
         return self.admin.first_name + ' ' + self.admin.last_name
@@ -208,22 +208,22 @@ class NotificationStaff(models.Model):
     objects = models.Manager()
 
 #signals below
-@receiver(post_save, sender=CustomUser) #this will auto send account to the section as per admin id when we create
-def create_user_profile(sender, instance, created, **kwargs):
-    if created: #data is sent as input
-        if instance.user_type == 1:
-            AdminHOD.objects.create(admin=instance)
-        if instance.user_type == 2:
-            staff.objects.create(admin=instance)
-        if instance.user_type == 3:
-            students.objects.create(admin=instance)
+# @receiver(post_save, sender=CustomUser) #this will auto send account to the section as per admin id when we create
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created: #data is sent as input
+#         if instance.user_type == 1:
+#             AdminHOD.objects.create(admin=instance)
+#         if instance.user_type == 2:
+#             staff.objects.create(admin=instance)
+#         if instance.user_type == 3:
+#             students.objects.create(admin=instance)
 
 
-@receiver(post_save, sender=CustomUser)# this will save data
-def create_user_profile(sender, instance, **kwargs):
-    if instance.user_type == 1:
-        instance.AdminHOD.save()
-    if instance.user_type == 2:
-        instance.staff.save()
-    if instance.user_type == 3:
-        instance.students.save()
+# @receiver(post_save, sender=CustomUser)# this will save data
+# def create_user_profile(sender, instance, **kwargs):
+#     if instance.user_type == 1:
+#         instance.AdminHOD.save()
+#     if instance.user_type == 2:
+#         instance.staff.save()
+#     if instance.user_type == 3:
+#         instance.students.save()

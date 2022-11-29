@@ -24,7 +24,7 @@ def dologin(request):
             elif user_type == '2':
                 pass
             elif user_type == '3':
-                pass
+                return HttpResponseRedirect('/studenthome')
             else:
                 messages.error(request, "Email and password are not identified")
                 return render('loginpage')
