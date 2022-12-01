@@ -73,7 +73,11 @@ def addstudent(request):
 
 @login_required(login_url='/')
 def addstaff(request):
-    return render(request, 'hod/addstaff.html')
+    course= Courses.object.all()
+    context = {
+        'course': course
+    }
+    return render(request, 'hod/addstaff.html', context)
 
 
 @login_required(login_url='/')

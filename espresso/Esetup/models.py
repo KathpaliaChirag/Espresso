@@ -35,21 +35,21 @@ class AdminHOD(models.Model):
     object = models.Manager()
 
 
-class staff(models.Model):
-    id = models.AutoField(primary_key=True)
-    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    # name = models.CharField(max_length= 255)
-    # email = models.CharField(max_length= 255)
-    # password = models.CharField(max_length= 255)
-    address = models.TextField()
-    created_at = models.DateTimeField(blank=True)
-    updated_at = models.DateTimeField(blank=True)
-    object = models.Manager()
 
 
 class Courses(models.Model):
     id = models.AutoField(primary_key=True)
     course_name = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    object = models.Manager()
+
+    def __str__(self):
+        return self.course_name
+
+class Departments(models.Model):
+    id = models.AutoField(primary_key=True)
+    Department_name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
     object = models.Manager()
@@ -69,14 +69,21 @@ class Session(models.Model):
         a= self.session_start + "-" + self.session_end
         return a
 
-class subjects(models.Model):
+class staff(models.Model):
     id = models.AutoField(primary_key=True)
-    subjects_name = models.CharField(max_length=255)
-    course_id = models.ForeignKey(Courses, on_delete=models.CASCADE)
-    staff_id = models.ForeignKey(staff, on_delete=models.CASCADE)
+    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    gender= models.CharField(max_length=255)
+    mobile= models.CharField(max_length=10)
+    # name = models.CharField(max_length= 255)
+    # email = models.CharField(max_length= 255)
+    # password = models.CharField(max_length= 255)
+    address = models.TextField()
     created_at = models.DateTimeField(blank=True)
     updated_at = models.DateTimeField(blank=True)
     object = models.Manager()
+
+def __str__(self):
+        return self.admin.first_name + ' ' + self.admin.last_name
 
 
 class students(models.Model):
@@ -99,6 +106,16 @@ class students(models.Model):
 
     def __str__(self):
         return self.admin.first_name + ' ' + self.admin.last_name
+
+
+class subjects(models.Model):
+    id = models.AutoField(primary_key=True)
+    subjects_name = models.CharField(max_length=255)
+    course_id = models.ForeignKey(Courses, on_delete=models.CASCADE)
+    staff_id = models.ForeignKey(staff, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(blank=True)
+    updated_at = models.DateTimeField(blank=True)
+    object = models.Manager()
 
 
 class attendence(models.Model):

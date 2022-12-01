@@ -24,15 +24,15 @@
     <div class="col-12">
     <h5 class="form-title"><span>Basic Details</span></h5>
     </div>
-    <!-- <div class="col-12 col-sm-6">
+    <div class="col-12 col-sm-6"> 
     <div class="form-group">
-    <label>Teacher ID</label>
+    <label>First Name</label>
     <input type="text" class="form-control">
-    </div>
-    </div> -->
+    </div> 
+    </div> 
     <div class="col-12 col-sm-6">
     <div class="form-group">
-    <label>Name</label>
+    <label>Last Name</label>
     <input type="text" class="form-control">
     </div>
     </div>
@@ -40,42 +40,93 @@
     <div class="form-group">
     <label>Gender</label>
     <select class="form-control">
-    <option>Male</option>
-    <option>Female</option>
-    <option>Others</option>
+    <option value="Male">select</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="others">Others</option>
     </select>
     </div>
     </div>
-    <div class="col-12 col-sm-6">
+    <!-- <div class="col-12 col-sm-6">
     <div class="form-group">
     <label>Date of Birth</label>
     <input type="date" class="form-control">
     </div>
-    </div>
+    </div> -->
     <div class="col-12 col-sm-6">
     <div class="form-group">
     <label>Mobile</label>
     <input type="text" class="form-control">
     </div>
     </div>
-    <div class="col-12 col-sm-6">
+
+    <div class="col-12 col-sm-12">
+        <div class="form-group">
+            <label>Permanent Address</label>
+            <textarea class="form-control" name="address"></textarea>
+        </div>
+    </div>
+
+
+    <div class="col-12">
+        <h5 class="form-title"><span>Professional Details</span></h5>
+        </div>
+        <div class="col-12 col-sm-6">
+            <div class="form-group">
+                <label>Course</label>
+                <select class="form-control" name="course">
+                    <option>Select Course</option>
+                    {% for i in course %}
+                    <option value="{{i.id}}">{{i.course_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6">
+            <div class="form-group">
+                <label>Department</label>
+                <select class="form-control" name="course">
+                    <option>Select Department</option>
+                    {% for i in course %}
+                    <option value="{{i.id}}">{{i.course_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6">
+            <div class="form-group">
+                <label>Area Of Expertise</label>
+                <textarea class="form-control" name="address"></textarea>
+            </div>
+        </div>
+        
+        <div class="col-12 col-sm-6">
+            <div class="form-group">
+                <label>Experience</label>
+                <textarea class="form-control" name="address"></textarea>
+            </div>
+        </div>
+
+       
+    <!-- <div class="col-12 col-sm-6">
     <div class="form-group">
     <label>Joining Date</label>
     <input type="date" class="form-control">
     </div>
-    </div>
-    <div class="col-12 col-sm-6">
+    </div> -->
+    <!-- <div class="col-12 col-sm-6">
     <div class="form-group">
     <label>Qualification</label>
     <input class="form-control" type="text">
     </div>
-    </div>
-    <div class="col-12 col-sm-6">
+    </div> -->
+    <!-- <div class="col-12 col-sm-6">
     <div class="form-group">
     <label>Experience</label>
     <input class="form-control" type="text">
     </div>
-    </div>
+    </div> -->
     <div class="col-12">
     <h5 class="form-title"><span>Login Details</span></h5>
     </div>
@@ -97,13 +148,13 @@
     <input type="text" class="form-control">
     </div>
     </div>
-    <div class="col-12 col-sm-6">
+    <!-- <div class="col-12 col-sm-6">
     <div class="form-group">
     <label>Repeat Password</label>
     <input type="text" class="form-control">
     </div>
-    </div>
-    <div class="col-12">
+    </div> -->
+    <!-- <div class="col-12">
     <h5 class="form-title"><span>Address</span></h5>
     </div>
     <div class="col-12">
@@ -145,5 +196,5 @@
     </div>
     </div>
     </div>
-   
+    -->
 {% endblock %}
